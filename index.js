@@ -54,8 +54,8 @@ const corsOptions = {
 };
 
 // Enable CORS with options
-app.use(cors(corsOptions));
-// app.use(cors());
+//app.use(cors(corsOptions));
+app.use(cors());
 
 
 app.post('/api/message', async (req, res) => {
