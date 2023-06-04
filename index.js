@@ -40,7 +40,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
-const allowedOrigins = ['http://127.0.0.1:5500', 'https://portfolio-api-2-rust.vercel.app'];
+const allowedOrigins = ['http://127.0.0.1:5500', 'https://www.superds.be'];
 
 const corsOptions = {
   origin: (origin, callback) => {
