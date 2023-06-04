@@ -40,7 +40,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
-const allowedOrigins = ['http://127.0.0.1:5500', 'TODO'];
+const allowedOrigins = ['http://127.0.0.1:5500', 'https://portfolio-api-2-rust.vercel.app'];
 
 const corsOptions = {
   origin: (origin, callback) => {
@@ -54,8 +54,8 @@ const corsOptions = {
 };
 
 // Enable CORS with options
-// app.use(cors(corsOptions));
-app.use(cors());
+app.use(cors(corsOptions));
+// app.use(cors());
 
 
 app.post('/api/message', async (req, res) => {
@@ -67,10 +67,10 @@ app.post('/api/message', async (req, res) => {
         }
       });
       console.log("reCAPTCHA score: " + response.data?.score);
-    //   if (response.data === undefined || !response.data?.success || response.data?.score < 0.5 ) {
-    //     res.status(403).send("FAIL");
-    //     return;
-    //   }
+      if (response.data === undefined || !response.data?.success || response.data?.score < 0.5 ) {
+        res.status(403).send("FAIL");
+        return;
+      }
   
       var mailOptions = {
         from: process.env.EMAIL_ADDRESS_FROM,
